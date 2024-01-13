@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <div id="div4">
+    <h1>willkommen auf Weedclicker-Beta</h1>
+</div>
+<head>
+    <title>Weedclicker</title>
+    <style>
+        body {
+            text-align: center;
+          height: 100%;
+background-image: url(weed.jpg);
+background-repeat: no-repeat;   
+background-size: cover;
+        }
+
+        .container {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+        
+        .emoji {
+            position: absolute;
+            font-size: 20px;
+            pointer-events: none;
+            font-family: "Arial", sans-serif; /* Schriftart aendern */
+        }
+
+
+        #score {
+            text-align: center;
+            font-size: 40px;
+            margin-top: 20px;
+            color: rgb(21, 0, 255);
+        }
+
+        #click-button {
+            text-align: center;
+            font-size: 30px;
+            padding: 20px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        #click-button:active {
+        text-align: center;
+      transform: scale(0.9);
+    }
+
+
+
+        #credits {
+            text-align: center;
+           position: absolute;
+           top: 50px;
+           left: 75%;
+           padding: 20px;
+           background-color: green;
+           border: 1px solid black;
+           cursor: pointer;
+           font-size: 24px;
+       }
+
+       
+       #credits:active {
+        text-align: center;
+      transform: scale(0.9);
+    }
+
+    #div1 {
+        text-align: center;
+        color: rgb(21, 0, 255);
+    }
+
+    #div2 {
+        text-align: center;
+        color: rgb(21, 0, 255);
+    }
+
+    #div3 {
+        text-align: center;
+        color: rgb(21, 0, 255);
+    }
+
+    #div4 {
+        text-align: center;
+        color: rgb(21, 0, 255);
+    }
+
+    #div5 {
+        text-align: center;
+        color: rgb(21, 0, 255);
+    }
+   
+#buttonx {
+
+           background-color: green;
+           border: 1px solid black;
+}
+
+    </style>
+
+</head>
+<body>
+    <div id="cookie"></div>
+     <div id="score">0</div>    
+    <button id="click-button" style="border-radius: 25px; background: linear-gradient(135deg, rgb(49, 117, 87)0%, rgb(56, 134, 96)100%); text-transform: uppercase; color: rgb(0, 0, 0);">farm Weed</button>
+
+    <div id="credits" style="border-radius: 10px; background: linear-gradient135deg, green; text-transform: uppercase; color: black; font-weight: bold; padding: 10px 20px;">Mitwirkende</div>
+    
+<div id="div2">
+      <h4> ⬇music⬇ </h4>
+    </div>
+<div id="div1">
+
+      <audio controls>
+        <source src="perkys.mp3" type="audio/mpeg">
+    </audio>
+
+
+</div>
+
+<div id="div5">
+
+    <ul>
+        <li>
+            <img src="joint.jpg" alt="Stein" width="200">
+            <p>Joint</p>
+            <p>Preis: 100 Weed</p>
+            <button id="buttonx" onclick="kaufen('kot.jpg', -100)">Kaufen</button>
+        </li>
+    </ul>
+
+</div>
+
+    <div>
+        <section>
+            <footer>
+                <div id="div3">
+                <h5>made by Kotnascher123</h5>
+            </div>
+            </footer>
+        </section>
+    </div>
+    &#160;
+
+    <script>
+        var score = 0;
+        var cookie = document.getElementById("cookie");
+        var scoreDisplay = document.getElementById("score");
+        var clickButton = document.getElementById("click-button");
+        var creditsButton = document.getElementById("credits");
+
+
+        // Retrieve the score from local storage if it exists
+        var storedScore = localStorage.getItem("score");
+        if (storedScore) {
+            score = parseInt(storedScore);
+            scoreDisplay.innerText = score;
+        }
+
+        cookie.addEventListener("click", function() {
+            score++;
+            updateScore();
+        });
+
+        clickButton.addEventListener("click", function() {
+            score++;
+            updateScore();
+        });
+        creditsButton.addEventListener("click", function() {
+          window.location.href = "credits.html";
+      });
+
+        function updateScore() {
+            scoreDisplay.innerText = score;
+            localStorage.setItem("score", score.toString());
+        }
+
+        function kaufen(image, price) {
+            var storedScore = localStorage.getItem("score");
+            var currentScore = storedScore ? parseInt(storedScore) : 0;
+            if (currentScore >= Math.abs(price)) {
+                score += price;
+                updateScore();
+                cookie.style.backgroundImage = "url('" + image + "')";
+            } else {
+                alert("Nicht genug Weed zum Kauf!");
+            }
+        }
+    </script>
+
+</body>
+</html> 
